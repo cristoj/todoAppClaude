@@ -297,10 +297,10 @@ See [Testing Library docs](https://testing-library.com/docs/queries/about#priori
 ## Workfow
 - Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/feature
 - Create a branch with the name feature_{feature} or issue_{feature}
-- Commits with logical code approved by tests
-- Final commit
-- Pull request to github with a resume of the developed
-- Merge
+- Commits with logical code approved by tests, always ask for revision before each commit
+- Final commit and push to github
+- Pull request to github with a resume of the developed, ask for approved before send PR
+- Merge, ask for approved before send Merge
 
 ### document storage place
 The resume, historical, decision, future references, etc.. documents will be storage at /claude_documents
