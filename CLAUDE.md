@@ -295,7 +295,7 @@ See [Testing Library docs](https://testing-library.com/docs/queries/about#priori
 - Production: TypeScript compiles to check types, Vite bundles to `dist/`
 
 ## IMPORTANE SEGUIR SIEMPRE ESTE WORKFLOW, SIEMPRE
-- Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/feature
+- Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/enhancement
 - Create a branch with the name feature_{feature} or issue_{feature}
 - Commits with logical code approved by tests, always ask for revision before each commit
 - Final commit and push to github
