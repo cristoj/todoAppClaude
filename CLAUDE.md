@@ -305,7 +305,7 @@ See [Testing Library docs](https://testing-library.com/docs/queries/about#priori
 - Commits with logical code approved by tests, always ask for revision before each commit
 - Final commit and push to github
 - Pull request to github with a resume of the developed and a tag bug/enhancement, ask for approved before send PR
-- Merge, ask for approved before send Merge
+- Merge, ask for approved before send Merge, and then close the issue with this action.
 
 ### document storage place
 The resume, historical, decision, future references, etc.. documents will be storage at /claude_documents
