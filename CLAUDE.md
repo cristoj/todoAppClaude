@@ -298,7 +298,7 @@ See [Testing Library docs](https://testing-library.com/docs/queries/about#priori
 - Development: Uses Vite dev server on default port 5173
 - Production: TypeScript compiles to check types, Vite bundles to `dist/`
 
-## IMPORTANE SEGUIR SIEMPRE ESTE WORKFLOW, SIEMPRE
+## IMPORTANE SEGUIR SIEMPRE ESTE WORKFLOW, SIEMPRE, ya sean bugs, nuevas features o simplemente modificaciones del código
 - Las tareas asignamelas a mi cristoj (cirstojvt@gmail.com)
 - Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/enhancement, if not created yet. It's possible that when planification was created.
 - Create a branch with the name feature_{feature} or issue_{feature}
