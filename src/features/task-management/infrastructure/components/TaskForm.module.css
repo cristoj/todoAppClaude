@@ -1,0 +1,84 @@
+/* src/features/task-management/infrastructure/components/TaskForm.module.css */
+
+.taskForm {
+  max-width: 500px;
+}
+
+.taskForm__title {
+  font-family: var(--font-family-titles);
+  font-size: var(--font-size-h5);
+}
+
+.taskForm__closeButton {
+  position: absolute;
+  right: 1rem;  
+  padding: 0.5rem; 
+  top: 0.75rem;
+  height: auto;
+}
+
+.taskForm__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.taskForm__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.taskForm__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.taskForm__input--error {
+  border-color: hsl(var(--destructive));
+}
+
+.taskForm__error {
+  font-size: var(--font-size-xs);
+  color: hsl(var(--destructive));
+  margin: 0;
+}
+
+.taskForm__radioGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.taskForm__radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.taskForm__radioLabel input[type="radio"] {
+  cursor: pointer;
+}
+
+.taskForm__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .taskForm {
+    max-width: 100%;
+  }
+
+  .taskForm__actions {
+    flex-direction: column-reverse;
+  }
+
+  .taskForm__actions button {
+    width: 100%;
+  }
+}

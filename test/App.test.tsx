@@ -1,17 +1,17 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import App from '../src/App'
 
 describe('App', () => {
-  it('renders with the title "Todo App"', () => {
+  it('renders Task Management application', async () => {
     render(<App />)
-    const titleElement = screen.getByRole('heading', { name: 'Todo App' })
+    const titleElement = await waitFor(() => screen.getByRole('heading', { name: 'Task Management' }))
     expect(titleElement).toBeInTheDocument()
   })
 
-  it('displays the app description', () => {
+  it('displays New Task button', async () => {
     render(<App />)
-    const description = screen.getByText(/Simple minimalist todo web app/i)
-    expect(description).toBeInTheDocument()
+    const newTaskButton = await waitFor(() => screen.getByRole('button', { name: /new task/i }))
+    expect(newTaskButton).toBeInTheDocument()
   })
 })

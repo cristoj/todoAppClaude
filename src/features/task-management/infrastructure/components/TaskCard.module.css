@@ -1,0 +1,127 @@
+/* src/features/task-management/infrastructure/components/TaskCard.module.css */
+
+.taskCard {
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.taskCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.taskCard--completed {
+  opacity: 0.7;
+}
+
+.taskCard--overdue {
+  border-left-color: hsl(var(--destructive));
+}
+
+.taskCard__header {
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.taskCard__titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.taskCard__title {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.taskCard__title--completed {
+  text-decoration: line-through;
+}
+
+.taskCard__checkbox--completed {
+  background-color: hsl(142.1 76.2% 36.3%);
+  border-color: hsl(142.1 76.2% 36.3%);
+}
+
+.taskCard__badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.taskCard__badge--completed {
+  background-color: hsl(142.1 76.2% 36.3%);
+  color: white;
+}
+
+.taskCard__badge--overdue {
+  background-color: hsl(var(--destructive));
+  color: white;
+}
+
+.taskCard__content {
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.taskCard__description {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--muted-foreground));
+  margin: 0;
+  line-height: var(--line-height);
+}
+
+.taskCard__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid hsl(var(--border));
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.taskCard__dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.taskCard__date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-xs);
+  color: hsl(var(--muted-foreground));
+}
+
+.taskCard__actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.taskCard__actionButton {
+  padding: 0.5rem;
+  height: auto;
+}
+
+.taskCard__actionButton--delete:hover {
+  color: hsl(var(--destructive));
+}
+
+@media (max-width: 640px) {
+  .taskCard__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .taskCard__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
