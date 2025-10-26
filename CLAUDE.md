@@ -71,6 +71,8 @@ public/           - Static files served directly (favicon, etc.)
 - Create factories to call this repositories and inject in parent components
 - **Each feature must have its own provider/context** - avoid centralizing all contexts in one place
 - Avoid depreciated items
+- Use template literal if need variable inside strings
+- User absolute routes for dependencies
 
 ### Naming Conventions
 
@@ -211,12 +213,14 @@ Some styles predefined in root:
 ```
 Other design features:
 - **Light/dark mode**: First read at system settings and then save one to localstorage
-- **Components**: use Shadcn ui, if you need to install, just do it
+- **Components**: use Shadcn ui, if you need to install, just do it. You have a MCP, please use it 
   - Shadcn UI components are located in `src/_shared/infrastructure/components/ui/`
   - Use absolute imports: `import { Button } from '@/_shared/infrastructure/components/ui/button'`
   - Utilities are in `src/_shared/infrastructure/lib/utils.ts`
 - **styles**: childrens class defined like {parent}__{child} and classes that modify another {parent}--{child}
 - **modules-styles**: Use then as possible
+- **Look and feel**: Use black/white always as possible, only colors for specific actions
+- **Icons**: use lucide-react library
 
 
 ### React Compiler
@@ -295,11 +299,12 @@ See [Testing Library docs](https://testing-library.com/docs/queries/about#priori
 - Production: TypeScript compiles to check types, Vite bundles to `dist/`
 
 ## IMPORTANE SEGUIR SIEMPRE ESTE WORKFLOW, SIEMPRE
-- Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/enhancement
+- Las tareas asignamelas a mi cristoj (cirstojvt@gmail.com)
+- Before start, create a issue with the new feature or correction with a small comment and todo list, with a tag bug/enhancement, if not created yet. It's possible that when planification was created.
 - Create a branch with the name feature_{feature} or issue_{feature}
 - Commits with logical code approved by tests, always ask for revision before each commit
 - Final commit and push to github
-- Pull request to github with a resume of the developed, ask for approved before send PR
+- Pull request to github with a resume of the developed and a tag bug/enhancement, ask for approved before send PR
 - Merge, ask for approved before send Merge
 
 ### document storage place

@@ -1,0 +1,48 @@
+/* src/features/task-management/infrastructure/components/TaskSearch.module.css */
+
+.taskSearch {
+  margin: 1.5rem 0;
+}
+
+.taskSearch__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.taskSearch__icon {
+  position: absolute;
+  left: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+}
+
+.taskSearch__input {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  font-size: var(--font-size-sm);
+}
+
+.taskSearch__clear {
+  position: absolute;
+  right: 0.25rem;
+  padding: 0.5rem;
+  height: auto;
+}
+
+.taskSearch__info {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-xs);
+  color: hsl(var(--muted-foreground));
+}
+
+.taskSearch__info strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .taskSearch__input {
+    font-size: var(--font-size-xs);
+  }
+}

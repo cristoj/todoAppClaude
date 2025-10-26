@@ -1,0 +1,40 @@
+/* src/features/task-management/infrastructure/components/DateFilters.module.css */
+
+.dateFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dateFilters__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.dateFilters__list {
+  width: 100%;
+  justify-content: flex-start;
+  background-color: hsl(var(--muted));
+  flex-wrap: wrap;
+}
+
+.dateFilters__trigger {
+  font-size: var(--font-size-sm);
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .dateFilters__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .dateFilters__trigger {
+    width: 100%;
+  }
+}

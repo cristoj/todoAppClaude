@@ -1,0 +1,36 @@
+/* src/features/task-management/infrastructure/components/TaskFilters.module.css */
+
+.taskFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.taskFilters__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.taskFilters__list {
+  width: 100%;
+  justify-content: flex-start;
+  background-color: hsl(var(--muted));
+}
+
+.taskFilters__trigger {
+  font-size: var(--font-size-sm);
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .taskFilters__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .taskFilters__trigger {
+    width: 100%;
+  }
+}

@@ -1,0 +1,55 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.04);
+}
+
+.stat-card__label {
+  font-size: 0.8125rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__value {
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-family: var(--font-family-titles);
+  color: hsl(var(--foreground));
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__trend {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.stat-card--completed .stat-card__value {
+  color: hsl(142.1 76.2% 36.3%);
+}
+
+.stat-card--overdue .stat-card__value {
+  color: hsl(0 84.2% 60.2%);
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
