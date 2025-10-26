@@ -8,7 +8,8 @@ import { useTaskStats } from '@/features/task-management/application/hooks/useTa
 import { useTaskFiltering } from '@/features/task-management/application/hooks/useTaskFiltering';
 import { TaskCard } from '@/features/task-management/infrastructure/components/TaskCard';
 import { TaskForm } from '@/features/task-management/infrastructure/components/TaskForm';
-import { Filters } from '@/features/task-management/infrastructure/components/Filters';
+import { TaskFilters } from '@/features/task-management/infrastructure/components/TaskFilters';
+import { DateFilters } from '@/features/task-management/infrastructure/components/DateFilters';
 import { TaskStats } from '@/features/task-management/infrastructure/components/TaskStats';
 import { TaskSearch } from '@/features/task-management/infrastructure/components/TaskSearch';
 import type { Task } from '@/features/task-management/domain/Task';
@@ -83,12 +84,20 @@ export function TaskList(): React.ReactElement {
         onSearchChange={setSearchQuery}
       />
 
-      <Filters
-        statusFilter={statusFilter}
-        onStatusFilterChange={setStatusFilter}
-        dateFilter={dateFilter}
-        onDateFilterChange={setDateFilter}
-      />
+      <div className={styles.taskList__filters}>
+        <div className={styles.taskList__filtersSection + ' ' + styles['taskList__filtersSection--status']}>
+          <TaskFilters
+            currentFilter={statusFilter}
+            onFilterChange={setStatusFilter}
+          />
+        </div>
+        <div className={styles.taskList__filtersSection + ' ' + styles['taskList__filtersSection--date']}>
+          <DateFilters
+            currentFilter={dateFilter}
+            onFilterChange={setDateFilter}
+          />
+        </div>
+      </div>
 
       {filteredTasks.length === 0 ? (
         <div className={styles.taskList__empty}>

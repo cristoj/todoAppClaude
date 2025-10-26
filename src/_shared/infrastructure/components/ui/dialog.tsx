@@ -2,7 +2,6 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 
 import { mergeTailwindClasses } from "@/_shared/infrastructure/lib/utils"
-import styles from "./dialog.module.css"
 
 
 const Dialog = DialogPrimitive.Root
