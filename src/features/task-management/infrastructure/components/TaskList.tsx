@@ -1,13 +1,12 @@
 // src/features/task-management/infrastructure/components/TaskList.tsx
 
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Plus } from 'lucide-react';
 import { Button } from '@/_shared/infrastructure/components/ui/button';
 import { useTasks } from '@/features/task-management/application/hooks/useTasks';
 import { useTaskStats } from '@/features/task-management/application/hooks/useTaskStats';
 import { useTaskFiltering } from '@/features/task-management/application/hooks/useTaskFiltering';
 import { TaskCard } from '@/features/task-management/infrastructure/components/TaskCard';
-import { TaskForm } from '@/features/task-management/infrastructure/components/TaskForm';
 import { TaskFilters } from '@/features/task-management/infrastructure/components/TaskFilters';
 import { DateFilters } from '@/features/task-management/infrastructure/components/DateFilters';
 import { TaskStats } from '@/features/task-management/infrastructure/components/TaskStats';
@@ -15,6 +14,11 @@ import { TaskSearch } from '@/features/task-management/infrastructure/components
 import type { Task } from '@/features/task-management/domain/Task';
 // @ts-ignore - CSS modules are handled by Vite
 import styles from './TaskList.module.css';
+
+// Lazy load TaskForm component to reduce initial bundle size
+const TaskForm = lazy(() =>
+  import('./TaskForm').then(m => ({ default: m.TaskForm }))
+);
 
 export function TaskList(): React.ReactElement {
   const { tasks, isLoading, deleteTask, toggleTaskStatus } = useTasks();
@@ -130,10 +134,14 @@ export function TaskList(): React.ReactElement {
       )}
 
       {isFormOpen && (
-        <TaskForm
-          task={editingTask}
-          onClose={handleFormClose}
-        />
+        <Suspense fallback={
+          <div className={styles.taskList__loading}>Loading form...</div>
+        }>
+          <TaskForm
+            task={editingTask}
+            onClose={handleFormClose}
+          />
+        </Suspense>
       )}
     </div>
   );

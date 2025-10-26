@@ -1,6 +1,6 @@
 // src/features/task-management/application/TaskContext.tsx
 
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import type { Task } from '@/features/task-management/domain/Task';
 import type { TaskRepository } from '@/features/task-management/domain/TaskRepository.interface';
 
@@ -79,8 +79,8 @@ export function TaskProvider({
     loadTasks();
   }, [loadTasks]);
 
-  return (
-    <TaskContext.Provider value={{
+  const contextValue = useMemo(
+    () => ({
       tasks,
       isLoading,
       createTask,
@@ -88,7 +88,12 @@ export function TaskProvider({
       deleteTask,
       toggleTaskStatus,
       reloadTasks: loadTasks
-    }}>
+    }),
+    [tasks, isLoading, createTask, updateTask, deleteTask, toggleTaskStatus, loadTasks]
+  );
+
+  return (
+    <TaskContext.Provider value={contextValue}>
       {children}
     </TaskContext.Provider>
   );

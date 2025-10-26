@@ -1,5 +1,6 @@
 // src/features/task-management/infrastructure/components/TaskCard.tsx
 
+import { useCallback, useMemo } from 'react';
 import { Pencil, CheckCheck, Trash2, Calendar, Clock } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/_shared/infrastructure/components/ui/card';
 import { Badge } from '@/_shared/infrastructure/components/ui/badge';
@@ -7,6 +8,17 @@ import { Button } from '@/_shared/infrastructure/components/ui/button';
 import type { Task } from '@/features/task-management/domain/Task';
 // @ts-ignore - CSS modules are handled by Vite
 import styles from './TaskCard.module.css';
+
+// Create DateTimeFormat instance once outside component to avoid recreation
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+
+function formatDate(date: Date): string {
+  return dateFormatter.format(new Date(date));
+}
 
 export interface TaskCardProps {
   task: Task;
@@ -16,16 +28,16 @@ export interface TaskCardProps {
 }
 
 export function TaskCard({ task, onEdit, onDelete, onToggleStatus }: TaskCardProps): React.ReactElement {
-  const isOverdue = task.status === 'pending' && task.dueDate && new Date(task.dueDate) < new Date();
+  const isOverdue = useMemo(() => {
+    if (task.status !== 'pending' || !task.dueDate) return false;
+    return new Date(task.dueDate) < new Date();
+  }, [task.status, task.dueDate]);
+
   const isCompleted = task.status === 'completed';
 
-  const formatDate = (date: Date): string => {
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    }).format(new Date(date));
-  };
+  const handleToggleStatus = useCallback(() => {
+    onToggleStatus(task.id);
+  }, [onToggleStatus, task.id]);
 
   return (
     <Card
@@ -83,7 +95,7 @@ export function TaskCard({ task, onEdit, onDelete, onToggleStatus }: TaskCardPro
         <div className={styles.taskCard__actions}>
           <Button
             variant="ghost"
-            onClick={() => { onToggleStatus(task.id), isCompleted }}
+            onClick={handleToggleStatus}
             aria-label={`Mark task ${task.title} as ${isCompleted ? 'pending' : 'completed'}`}
             className={isCompleted ? styles['taskCard__checkbox--completed'] : ''}
           >
